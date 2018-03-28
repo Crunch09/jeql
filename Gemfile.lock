@@ -10,7 +10,6 @@ GEM
   specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    coderay (1.1.2)
     colorator (1.1.0)
     concurrent-ruby (1.0.5)
     crack (0.4.3)
@@ -52,13 +51,9 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
-    method_source (0.9.0)
     multipart-post (2.0.0)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
-    pry (0.11.3)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
     public_suffix (3.0.2)
     rake (10.5.0)
     rb-fsevent (0.10.2)
@@ -96,7 +91,6 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   jeql!
-  pry
   rake (~> 10.0)
   rspec (~> 3.0)
   webmock
