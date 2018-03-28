@@ -1,4 +1,4 @@
-# jeql
+# jeql [![Build Status](https://travis-ci.org/Crunch09/jeql.svg?branch=master)](https://travis-ci.org/Crunch09/jeql)
 
 ## Installation
 
