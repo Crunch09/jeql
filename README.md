@@ -2,19 +2,20 @@
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this to to your site's `Gemfile`:
 
-```ruby
-gem 'jeql'
-```
+  ```ruby
+  gem 'jeql'
+  ```
 
-And then execute:
+Add the following to your site's config file (usually `_config.yml`):
 
-    $ bundle
+  ```yml
+  plugins:
+    - jeql
+  ```
+After this run `bundle install` within your site's directory.
 
-Or install it yourself as:
-
-    $ gem install jeql
 
 ## Usage
 
@@ -100,3 +101,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the jeql project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Crunch09/jeql/blob/master/CODE_OF_CONDUCT.md).
+
+## Inspirations
+
+This gem was inspired by [github-metadata](https://github.com/jekyll/github-metadata) and
+[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag).
