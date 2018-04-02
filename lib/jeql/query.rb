@@ -1,5 +1,6 @@
 module Jeql
   class Query
+    attr_reader :query_name
 
     def initialize(query_name, source_dir, endpoint_config)
       @query_name = query_name
@@ -9,7 +10,7 @@ module Jeql
 
     def response
       @memoized_responses ||= {}
-      @memoized_responses["#{@query_name}"] ||= execute
+      @memoized_responses[@query_name] ||= execute
     end
 
     private

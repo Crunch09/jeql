@@ -1,4 +1,5 @@
 class Jeql::GraphqlBlock < Liquid::Block
+  GraphQlError = Class.new(Jekyll::Errors::FatalException)
 
   def initialize(tag_name, text, tokens)
     super
@@ -12,9 +13,12 @@ class Jeql::GraphqlBlock < Liquid::Block
 
     endpoint_config = context.registers[:site].config["jeql"][hash_params["endpoint"]]
     query = Jeql::Query.new(hash_params["query"], context.registers[:site].config["source"], endpoint_config)
-
-    context['data'] = JSON.parse(query.response.body)['data']
-    super
+    if query.response.success?
+      context['data'] = JSON.parse(query.response.body)['data']
+      super
+    else
+      raise GraphQlError, "The query #{query.query_name} failed"
+    end
   end
 end
 

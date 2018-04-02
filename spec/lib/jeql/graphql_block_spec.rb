@@ -26,6 +26,8 @@ RSpec.describe Jeql::GraphqlBlock do
     {% endgraphql %}
     TEMPLATE
   }
+  let(:response_status) { 200 }
+  let(:response_body) { File.read(File.expand_path("responses/last_repos_success.json", source_dir)) }
   let(:tokenizer) { Liquid::Tokenizer.new(template) }
   let(:parse_context) { Liquid::ParseContext.new }
   let(:rendered) { subject.render(render_context) }
@@ -40,12 +42,21 @@ RSpec.describe Jeql::GraphqlBlock do
     f = File.read(File.expand_path("_graphql/last_repos.json", source_dir))
     stub_request(:post, "https://api.github.com/graphql")
       .with(body: f, headers: {'Content-Type' => 'application/json'})
-      .to_return(status: 200, body: File.read(File.expand_path("responses/last_repos_success.json", source_dir)))
+      .to_return(status: response_status, body: response_body)
     Jekyll.logger.log_level = :error
   end
 
   it "renders" do
     expected = "<li>jekyll</li>\n\n<li>jeql</li>\n\n<li>rails</li>"
     expect(rendered.strip).to eq(expected)
+  end
+
+  context "with a failed query" do
+    let(:response_status) { 500 }
+    let(:response_body) { "" }
+
+    it "raises an exception" do
+      expect{ rendered }.to raise_error(Jeql::GraphqlBlock::GraphQlError)
+    end
   end
 end
