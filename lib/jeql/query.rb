@@ -16,11 +16,15 @@ module Jeql
     private
 
     def execute
-      conn = Faraday.new(url: @endpoint_config["url"])
+      conn = Faraday.new(url: @endpoint_config["url"], request: timeout_settings)
       response = conn.post do |req|
         req.headers = (@endpoint_config["header"] || {}).merge('Content-Type' => 'application/json')
         req.body = @query_file
       end
+    end
+
+    def timeout_settings
+      {open_timeout: 2, timeout: 2}
     end
   end
 end
