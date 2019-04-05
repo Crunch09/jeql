@@ -8,8 +8,7 @@ class Jeql::GraphqlBlock < Liquid::Block
   end
 
   def render(context)
-    hash_params = {}
-    @params.each {|k, v| hash_params[k] = v}
+    hash_params = Hash[@params]
 
     endpoint_config = context.registers[:site].config["jeql"][hash_params["endpoint"]]
     query = Jeql::Query.new(hash_params["query"], context.registers[:site].config["source"], endpoint_config)
