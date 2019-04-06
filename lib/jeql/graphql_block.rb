@@ -3,7 +3,7 @@ class Jeql::GraphqlBlock < Liquid::Block
 
   def initialize(tag_name, text, tokens)
     super
-    @params = text.strip.split(',').map(&:strip).map{|s| s.gsub(%r!['"]!, '').split(':').map(&:strip)}
+    @params = text.split(',').map{|s| s.gsub(%r!['"]!, '').split(':').map(&:strip)}
     @text = text
   end
 
