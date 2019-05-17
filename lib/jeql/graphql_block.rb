@@ -1,9 +1,10 @@
 class Jeql::GraphqlBlock < Liquid::Block
   GraphQlError = Class.new(Jekyll::Errors::FatalException)
+  PARAMS_SYNTAX = /(\w+):\s*['"](\w+)['"],?/
 
   def initialize(tag_name, text, tokens)
     super
-    @params = text.split(',').map{|s| s.gsub(%r!['"]!, '').split(':').map(&:strip)}
+    @params = text.scan(PARAMS_SYNTAX)
     @text = text
   end
 
