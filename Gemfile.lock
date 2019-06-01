@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jeql (0.1.2)
+    jeql (0.2.1)
       faraday
       jekyll (~> 3.7)
 
@@ -19,7 +19,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
-    faraday (0.14.0)
+    faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     forwardable-extended (2.6.0)
@@ -51,7 +51,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.3)
@@ -96,4 +96,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.1
+   1.17.1
