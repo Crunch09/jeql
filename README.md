@@ -44,7 +44,7 @@ private config file which is not checked into your version control system.
 
 ### GraphQL queries
 
-Queries in `jeql` are specified as *json* files and live within the `_jeql` directory
+Queries in `jeql` are specified as *json* files and live within the `_graphql` directory
 of your jekyll site.
 An example query file would have the following content:
 ```json
@@ -52,7 +52,7 @@ An example query file would have the following content:
   "query": "query { viewer { name repositories(last: 3){ nodes { name }} }}"
 }
 ```
-and would e.g. be stored as `/_jeql/last_touched_repositories.json`.
+and would e.g. be stored as `/_graphql/last_touched_repositories.json`.
 
 ### Using it in liquid
 
@@ -63,7 +63,7 @@ The `graphql` tag expects two parameters:
 - query
 
 `endpoint` is the name of the graphQL - API endpoint as you have it defined in your
-jekyll config file. `query` is the name of the file under `_jeql` in which you stored
+jekyll config file. `query` is the name of the file under `_graphql` in which you stored
 the graphQL query that should be executed against the endpoint (withou the *.json* extension).
 
 An example which uses the settings and query from the paragraphs above would look like this:
