@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "webmock"
   spec.add_dependency "faraday"
-  spec.add_dependency "jekyll", "~> 3.7"
+  spec.add_dependency "jekyll", "~> 4.0"
 end
