@@ -1,8 +1,6 @@
 # jeql - Jekyll with GraphQL 
 
-This is a quick fork to just change the Jekyll version to 4.x.
-
-[![Build Status](https://travis-ci.org/Crunch09/jeql.svg?branch=master)](https://travis-ci.org/Crunch09/jeql) [![Gem Version](https://badge.fury.io/rb/jeql.svg)](https://badge.fury.io/rb/jeql)
+![](https://github.com/Crunch09/jeql/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/jeql.svg)](https://badge.fury.io/rb/jeql)
 
 ## Installation
 
