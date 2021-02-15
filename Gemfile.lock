@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jeql (0.2.1)
+    jeql (0.3)
       faraday
       jekyll (~> 4.0)
 

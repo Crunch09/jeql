@@ -1,3 +1,7 @@
+## 0.3
+
+- BREAKING: Require at least Jekyll version 4.0
+
 ## 0.2.1
 
 - fix Gemfile.lock
