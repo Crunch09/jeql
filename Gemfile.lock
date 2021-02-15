@@ -93,7 +93,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.1)
   jeql!
   rake (~> 13.0)
   rspec (~> 3.0)
