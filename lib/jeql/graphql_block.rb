@@ -17,7 +17,9 @@ class Jeql::GraphqlBlock < Liquid::Block
       context['data'] = JSON.parse(query.response.body)['data']
       super
     else
-      raise GraphQlError, "The query #{query.query_name} failed"
+      responseBody = JSON.parse(query.response.body)
+      message = responseBody.key?("message") ? "Endpoint responded: #{responseBody['message']}" : ""
+      raise GraphQlError, "The query #{query.query_name} failed. " + message 
     end
   end
 end
