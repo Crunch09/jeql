@@ -8,6 +8,17 @@ class Jeql::GraphqlBlock < Liquid::Block
     @text = text
   end
 
+  def handleResponse(responseBody)
+    begin
+      JSON.parse(responseBody)
+    rescue JSON::ParserError => e
+      return ""
+    end
+    responseBody = JSON.parse(query.response.body)
+
+    return responseBody.key?("message") ? "Endpoint responded: \"#{responseBody['message']}\"" : ""
+  end
+
   def render(context)
     hash_params = Hash[@params]
 
@@ -17,9 +28,8 @@ class Jeql::GraphqlBlock < Liquid::Block
       context['data'] = JSON.parse(query.response.body)['data']
       super
     else
-      responseBody = JSON.parse(query.response.body)
-      message = responseBody.key?("message") ? "Endpoint responded: #{responseBody['message']}" : ""
-      raise GraphQlError, "The query #{query.query_name} failed. " + message 
+      message = handleResponse(query.response.body)
+      raise GraphQlError, "The query #{query.query_name} failed. " + message
     end
   end
 end
