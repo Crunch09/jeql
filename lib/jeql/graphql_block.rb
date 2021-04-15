@@ -10,13 +10,11 @@ class Jeql::GraphqlBlock < Liquid::Block
 
   def handleResponse(responseBody)
     begin
-      JSON.parse(responseBody)
+      response = JSON.parse(responseBody)
+      return response.key?("message") ? "Endpoint responded: \"#{response['message']}\"" : ""
     rescue JSON::ParserError => e
       return ""
     end
-    responseBody = JSON.parse(query.response.body)
-
-    return responseBody.key?("message") ? "Endpoint responded: \"#{responseBody['message']}\"" : ""
   end
 
   def render(context)
