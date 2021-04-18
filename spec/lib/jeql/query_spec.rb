@@ -1,6 +1,7 @@
 RSpec.describe Jeql::Query do
   # Jeql::Query.new(hash_params["query"], context.registers[:site].config["source"], endpoint_config)
   let(:query_name) { "last_repos" }
+  let(:request_body_name) { "request_body" }
   let(:url) { "https://api.github.com/graphql" }
   let(:faraday_response) { "last_repos_success" }
   let(:response_body) { File.read(File.expand_path("responses/#{faraday_response}.json", source_dir)) }
@@ -12,7 +13,7 @@ RSpec.describe Jeql::Query do
 
   describe "response" do
     before do
-      f = File.read(File.expand_path("_graphql/#{query_name}.json", source_dir))
+      f = File.read(File.expand_path("_graphql/#{request_body_name}.json", source_dir))
       stub_request(:post, url)
         .with(body: f, headers: {'Content-Type' => 'application/json'})
         .to_return(status: response_status, body: response_body)
