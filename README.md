@@ -1,4 +1,4 @@
-# jeql - Jekyll with GraphQL 
+# jeql - Jekyll with GraphQL
 
 ![](https://github.com/Crunch09/jeql/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/jeql.svg)](https://badge.fury.io/rb/jeql)
 
@@ -38,26 +38,33 @@ jeql:
   github:
     url: "https://api.github.com/graphql"
     header:
-      Authorization: "bearer my-secret-header"
+      # The 'bearer' string preceding the token:
+      # ..without it the grahql endpoint won't recognise your key
+      Authorization: "bearer <my-secret-header>"
 ```
 
 **Attention**: Make sure to *not* commit authorization tokens in a public repository.
-Instead make use of Jekyll's multiple-config-file feature and add these tokens to a
+Instead make use of Jekyll's [multiple-config-file feature](https://jekyllrb.com/docs/configuration/options/#build-command-options) and add these tokens to a
 private config file which is not checked into your version control system.
 
 ### GraphQL queries
 
-Queries in `jeql` are specified as *json* files and live within the `_graphql` directory
+Queries in `jeql` are specified within `*.graphql` files and live within the `_graphql` directory
 of your Jekyll site.
 
 An example query file would have the following content:
 
-```json
-{
-  "query": "query { viewer { name repositories(last: 3){ nodes { name }} }}"
+```grapqhl
+query {
+  viewer {
+    name
+    repositories(last: 3) {
+      nodes { name }
+    }
+  }
 }
 ```
-and would e.g. be stored as `/_graphql/last_touched_repositories.json`.
+and would e.g. be stored as `./_graphql/last_touched_repositories.graphql`.
 
 ### Using it in liquid
 
@@ -69,7 +76,7 @@ The `graphql` tag expects two parameters:
 
 `endpoint` is the name of the graphQL - API endpoint as you have it defined in your
 Jekyll config file. `query` is the name of the file under `_graphql` in which you stored
-the graphQL query that should be executed against the endpoint (without the *.json* extension).
+the graphQL query that should be executed against the endpoint (without the *.graphql* extension).
 
 An example which uses the settings and query from the paragraphs above would look like this:
 
