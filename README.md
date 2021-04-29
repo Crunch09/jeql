@@ -38,8 +38,8 @@ jeql:
   github:
     url: "https://api.github.com/graphql"
     header:
-      # The 'bearer' string preceding the token:
-      # ..without it the grahql endpoint won't recognise your key
+      # The 'bearer' string preceding the token.
+      # Without it the GraphQL endpoint won't recognise your key.
       Authorization: "bearer <my-secret-header>"
 ```
 
