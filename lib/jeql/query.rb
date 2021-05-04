@@ -1,7 +1,6 @@
 module Jeql
   ##
   # For interfacing with a given GraphQl endpoint using a specific query file
-
   class Query
     attr_reader :query_name
 
