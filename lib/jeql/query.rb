@@ -1,10 +1,13 @@
 module Jeql
+  ##
+  # For interfacing with a given GraphQl endpoint using a specific query file
   class Query
     attr_reader :query_name
 
     def initialize(query_name, source_dir, endpoint_config)
       @query_name = query_name
-      @query_file = File.read File.expand_path "./_graphql/#{query_name}.json", source_dir
+      query_parser = QueryParser.new(query_name)
+      @query_file = query_parser.build_request_body(source_dir)
       @endpoint_config = endpoint_config
     end
 

@@ -1,3 +1,0 @@
-{
-  "query": "query { viewer { name repositories(last: 3){ nodes { name }} }}"
-}

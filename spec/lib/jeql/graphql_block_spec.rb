@@ -12,6 +12,8 @@ RSpec.describe Jeql::GraphqlBlock do
       }
     }
   end
+  let(:query_name) { "last_repos" }
+  let(:request_body_name) { "request_body" }
   let(:page_meta) { {} }
   let(:page)      { make_page(page_meta) }
   let(:site)      { make_site(config) }
@@ -39,7 +41,7 @@ RSpec.describe Jeql::GraphqlBlock do
   end
 
   before do
-    f = File.read(File.expand_path("_graphql/last_repos.json", source_dir))
+    f = File.read(File.expand_path("_graphql/#{request_body_name}.json", source_dir))
     stub_request(:post, "https://api.github.com/graphql")
       .with(body: f, headers: {'Content-Type' => 'application/json'})
       .to_return(status: response_status, body: response_body)
